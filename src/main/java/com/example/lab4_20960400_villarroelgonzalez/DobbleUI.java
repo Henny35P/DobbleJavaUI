@@ -1,5 +1,8 @@
 package com.example.lab4_20960400_villarroelgonzalez;
 
+import Model.Dobble;
+import Model.DobbleGame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,6 +16,9 @@ public class DobbleUI {
     private JTabbedPane seccionInfo;
     private JTextPane userPrompt;
     private JTextArea infoJuego;
+    private DobbleGame dg;
+
+
 
     public DobbleUI() {
         crearMazo.addActionListener(new ActionListener() {
