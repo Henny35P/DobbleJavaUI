@@ -1,4 +1,4 @@
-package com.example.lab4_20960400_villarroelgonzalez;
+package Vista;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

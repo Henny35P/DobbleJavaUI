@@ -4,6 +4,6 @@ module com.example.lab4_20960400_villarroelgonzalez {
     requires java.desktop;
 
 
-    opens com.example.lab4_20960400_villarroelgonzalez to javafx.fxml;
-    exports com.example.lab4_20960400_villarroelgonzalez;
+    opens Vista to javafx.fxml;
+    exports Vista;
 }

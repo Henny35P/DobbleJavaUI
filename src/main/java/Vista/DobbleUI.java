@@ -1,6 +1,5 @@
-package com.example.lab4_20960400_villarroelgonzalez;
+package Vista;
 
-import Model.Dobble;
 import Model.DobbleGame;
 
 import javax.swing.*;
@@ -15,8 +14,13 @@ public class DobbleUI {
     private JButton jugarJuego;
     private JTabbedPane seccionInfo;
     private JTextPane userPrompt;
+    private JTextArea NumCards;
+    private JTextArea NumE;
+    private JButton button1;
+    private JTextField stringNumC;
+    private JTextField stringNumE;
     private JTextArea infoJuego;
-    private DobbleGame dg;
+    private DobbleGame Dobble;
 
 
 
