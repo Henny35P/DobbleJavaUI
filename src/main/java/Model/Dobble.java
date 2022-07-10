@@ -67,10 +67,10 @@ public class Dobble implements IDobble {
             for (i = 0; i < num; i++) {
                 cardsSetMax.add(cardsSet.get(i));
             }
-            setMazo(cardsSetMax);
+            this.setMazo(cardsSetMax);
         } else {
-            setMazo(cardsSet);
-            setnumCartas(cardsSet.size());
+            this.setMazo(cardsSet);
+            this.setnumCartas(cardsSet.size());
 
         }
 
@@ -107,7 +107,7 @@ public class Dobble implements IDobble {
     // Remplzaa toString generico
     @Override
     public String toString() {
-        ArrayList<Card> X = this.cardsSet;
+        ArrayList<Card> X = this.getMazo();
         StringBuilder CardsString = new StringBuilder();
         int i = 0;
         for (Card carta : X) {
