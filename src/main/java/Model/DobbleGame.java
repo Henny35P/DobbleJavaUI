@@ -96,18 +96,20 @@ public class DobbleGame implements IDobbleGame {
 
     // Registra Jugador en la partida
     @Override
-    public void register(String nombre) {
+    public boolean register(String nombre) {
 
-        if (this.getPlayers().size() > numPlayers) {
-            System.out.println("Maximo de Jugadores"); // Poner con exceptions
+
+        if (this.getPlayers().size() >= numPlayers) {
+            return false;
         }
         for (Player player : this.getPlayers()) {
             if (nombre.equals(player.getNombre())) {
-                System.out.println("Nombre repetido"); // Igualmente
+                return false;
             }
         }
         Player player = new Player(nombre);
         players.add(player);
+        return true;
 
     }
 
@@ -122,6 +124,15 @@ public class DobbleGame implements IDobbleGame {
     public ArrayList<Player> getPlayers() {
         return players;
     }
+
+    public String playersToString() {
+        String StringJugadores = "";
+        for (Player x : this.getPlayers()){
+            StringJugadores = StringJugadores + x + "\n";
+        }
+        return StringJugadores;
+    }
+
 
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;

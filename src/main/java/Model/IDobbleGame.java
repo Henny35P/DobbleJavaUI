@@ -18,7 +18,7 @@ public interface IDobbleGame {
 
     String match(ArrayList<String> cartas);
 
-    void register(String nombre);
+    boolean register(String nombre);
 
     String whoseTurnIsIt();
 }

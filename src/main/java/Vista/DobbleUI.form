@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Vista.DobbleUI">
-  <grid id="27dc6" binding="DobbleUiPanel" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="true" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="DobbleUiPanel" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="536" height="434"/>
+      <xy x="20" y="20" width="510" height="434"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -24,21 +24,17 @@
           <text value="Button"/>
         </properties>
       </component>
-      <vspacer id="9c90b">
-        <constraints>
-          <grid row="3" column="1" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
       <tabbedpane id="87f22" binding="seccionInfo">
         <constraints>
-          <grid row="1" column="2" row-span="4" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="200" height="200"/>
+          <grid row="0" column="1" row-span="5" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="400" height="200"/>
+            <maximum-size width="400" height="-1"/>
           </grid>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="7c914" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="7c914" binding="generacionMazo" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title="Untitled"/>
@@ -86,7 +82,8 @@
                 </constraints>
                 <properties>
                   <columns value="10"/>
-                  <enabled value="false"/>
+                  <editable value="false"/>
+                  <enabled value="true"/>
                   <text value="Ingrese el Numero de Cartas (-1 para el predeterminado)"/>
                 </properties>
               </component>
@@ -97,6 +94,7 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <editable value="false"/>
                   <text value="Ingrese el Numero de elementos por carta"/>
                 </properties>
               </component>
@@ -115,12 +113,13 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <editable value="false"/>
                   <text value="Ingrese el numero de jugadores maximo"/>
                 </properties>
               </component>
             </children>
           </grid>
-          <grid id="53376" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="53376" binding="registroJugadores" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <tabbedpane title="Untitled"/>
@@ -128,13 +127,111 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="8128" class="javax.swing.JTextPane" binding="userPrompt">
+              <component id="b8eaa" class="javax.swing.JTextArea" binding="stringJugadores">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                  <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                  <text value="No hay jugadores registrados"/>
+                </properties>
+              </component>
+              <vspacer id="70bae">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="a5c87" class="javax.swing.JButton" binding="botonRegistrar">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Button"/>
+                </properties>
+              </component>
+              <component id="d292" class="javax.swing.JTextArea" binding="inputJugador">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="50"/>
                   </grid>
                 </constraints>
                 <properties/>
+              </component>
+            </children>
+          </grid>
+          <grid id="2af46" binding="seccionJugar" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <tabbedpane title="Untitled"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="9ec83" class="javax.swing.JTextArea" binding="stringTextoEleccion">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="180ca" class="javax.swing.JButton" binding="botonEnviarEleccion">
+                <constraints>
+                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Button"/>
+                </properties>
+              </component>
+              <component id="376ba" class="javax.swing.JTextField" binding="inputSelectCard">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="c2498" class="javax.swing.JTextArea" binding="stringShowCards">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="7740c" class="javax.swing.JButton" binding="botonJugar">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Button"/>
+                </properties>
+              </component>
+              <component id="91f1d" class="javax.swing.JButton" binding="botonSkip">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Button"/>
+                </properties>
+              </component>
+              <component id="9470e" class="javax.swing.JButton" binding="botonMostrarCard">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Button"/>
+                </properties>
+              </component>
+              <component id="37544" class="javax.swing.JButton" binding="botonTerminar">
+                <constraints>
+                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Button"/>
+                </properties>
               </component>
             </children>
           </grid>
@@ -148,14 +245,23 @@
           <text value="Button"/>
         </properties>
       </component>
-      <component id="36b9f" class="javax.swing.JTextField" binding="infoJuego">
+      <scrollpane id="bd858" binding="ScrollInfo">
         <constraints>
-          <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="2" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
-      </component>
+        <border type="none"/>
+        <children>
+          <component id="a80d4" class="javax.swing.JTextArea" binding="infoJuego">
+            <constraints/>
+            <properties>
+              <editable value="false"/>
+              <enabled value="true"/>
+              <margin top="10" left="10" bottom="10" right="10"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
     </children>
   </grid>
 </form>
