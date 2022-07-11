@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DobbleUI {
+    // Diferentes atributos de la UI
+    // Credos por IntelliJ
     private JPanel DobbleUiPanel;
     private JButton crearMazo;
     private JButton registrarUser;
@@ -43,7 +45,9 @@ public class DobbleUI {
     public DobbleUI() {
         crearMazo.addActionListener(new ActionListener() {
             /**
-             * @param e the event to be processed
+             * Agrega un listener al boton
+             * Al apretar, se cambiara el index a 0
+             * Lo cual permite cambiar lo que se muestra en ese panel
              */
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,7 +58,8 @@ public class DobbleUI {
         });
         registrarUser.addActionListener(new ActionListener() {
             /**
-             * @param e the event to be processed
+             * Listener de boton
+             * Cambia index de panel
              */
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -64,7 +69,8 @@ public class DobbleUI {
         });
         jugarJuego.addActionListener(new ActionListener() {
             /**
-             * @param e the event to be processed
+             * Listener de boton
+             * Cambia index de panel
              */
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -74,7 +80,8 @@ public class DobbleUI {
         });
         botonCrearJuego.addActionListener(new ActionListener() {
             /**
-             * @param e the event to be processed
+             * Listener de boton
+             * Llama a funcion que creara mazo
              */
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -84,7 +91,8 @@ public class DobbleUI {
         });
         botonRegistrar.addActionListener(new ActionListener() {
             /**
-             * @param e the event to be processed
+             * Listener de boton
+             * Llama a funcion que registrara usuario
              */
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -94,7 +102,8 @@ public class DobbleUI {
         });
         botonMostrarCard.addActionListener(new ActionListener() {
             /**
-             * @param e the event to be processed
+             * Listener de boton
+             * Llama a funcion que iniciara el juego
              */
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -103,7 +112,8 @@ public class DobbleUI {
         });
         botonSkip.addActionListener(new ActionListener() {
             /**
-             * @param e the event to be processed
+             * Listener de boton
+             * Llama a funcion que saltara el turno
              */
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -114,7 +124,8 @@ public class DobbleUI {
         });
         botonEnviarEleccion.addActionListener(new ActionListener() {
             /**
-             * @param e the event to be processed
+             * Listener de boton
+             * Llama a funcion que vera si el usuario acerto el elemento
              */
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -124,7 +135,25 @@ public class DobbleUI {
 
             }
         });
+        botonTerminar.addActionListener(new ActionListener() {
+            /**
+             * Listener de boton
+             * Llama a funcion que terminara el juego
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actionTerminarJuego();
+
+            }
+        });
     }
+
+    /**
+     * Funcion que leera el texto de los inputs de GUI
+     * Creara un Mazo con esos datos, un juego con ese mazo
+     * Se mostrara los datos de este al usuario
+     */
+
 
     public void actionCreateSet() {
         int numeroCards = Integer.parseInt(NumC.getText());
@@ -137,6 +166,11 @@ public class DobbleUI {
         this.infoJuego.setText(this.getDobbleJuego().toString());
     }
 
+    /**
+     * Funcion que leera el texto de los inputs de GUI
+     * Registrara un usuario con ese dato
+     * Se mostrara error en caso de repetido o maximo de jugadores
+     */
     public void actionRegistrarUser() {
         String X = this.inputJugador.getText();
         boolean y = this.getDobbleJuego().register(X);
@@ -147,17 +181,32 @@ public class DobbleUI {
 
     }
 
+    /**
+     * Funcion que leera el texto de los inputs de GUI
+     * Llamara a la funcion de jugar con el parametro de saltar turno
+     * Muestra el turno una vez sea saltado
+     */
     public void actionSaltarTurno() {
         String X = this.getDobbleJuego().play("pass", "");
         stringTextoEleccion.setText(X);
     }
 
+    /**
+     * Funcion que leera el texto de los inputs de GUI
+     * Llamara a la funcion de jugar con el parametro null, haciendo volteo inicial
+     * Muestra el turno una vez termine el turno
+     */
     public void actionIniciarJuego() {
         String X = this.getDobbleJuego().play("null", "");
         stringShowCards.setText(X);
         stringTextoEleccion.setText("Es el turno de :" + this.getDobbleJuego().getPlayers().get(0).toString());
     }
 
+    /**
+     * Funcion que leera el texto de los inputs de GUI
+     * Llamara a la funcion de jugar con el parametro de jugar con el elemento leido
+     * Muestra el turno una vez termine el turno
+     */
     public void actionJugarTurno(String Y) {
         String W = this.getDobbleJuego().play("spotit", Y);
         this.getDobbleJuego().play("null", "");
@@ -167,6 +216,16 @@ public class DobbleUI {
 
     }
 
+    public void actionTerminarJuego() {
+        this.infoJuego.setText(this.getDobbleJuego().toString());
+        stringShowCards.setText("TERMINADO");
+        stringTextoEleccion.setText("TERMINADO");
+    }
+
+    /**
+     * Funcion Constructora
+     * Iniciara la GUI
+     */
     public static void main(String[] args) {
         JFrame frame = new JFrame("DobbleUI");
         frame.setContentPane(new DobbleUI().DobbleUiPanel);
@@ -178,6 +237,10 @@ public class DobbleUI {
     private void createUIComponents() {
         // TODO: place custom component creation code here
     }
+
+    /**
+     * Setters y Getters
+     */
 
     public DobbleGame getDobbleJuego() {
         return DobbleJuego;
@@ -237,8 +300,8 @@ public class DobbleUI {
         NumC.setToolTipText("");
         generacionMazo.add(NumC, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         botonCrearJuego = new JButton();
-        botonCrearJuego.setLabel("Crear Mazo");
-        botonCrearJuego.setText("Crear Mazo");
+        botonCrearJuego.setLabel("Crear Mazo para jugar");
+        botonCrearJuego.setText("Crear Mazo para jugar");
         generacionMazo.add(botonCrearJuego, new com.intellij.uiDesigner.core.GridConstraints(6, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         stringNumC = new JTextField();
         stringNumC.setColumns(10);
@@ -275,6 +338,7 @@ public class DobbleUI {
         seccionInfo.addTab("", seccionJugar);
         seccionInfo.setEnabledAt(2, false);
         stringTextoEleccion = new JTextArea();
+        stringTextoEleccion.setEditable(false);
         seccionJugar.add(stringTextoEleccion, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 3, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         botonEnviarEleccion = new JButton();
         botonEnviarEleccion.setLabel("Spot it!");
@@ -283,6 +347,7 @@ public class DobbleUI {
         inputSelectCard = new JTextArea();
         seccionJugar.add(inputSelectCard, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         stringShowCards = new JTextArea();
+        stringShowCards.setEditable(false);
         seccionJugar.add(stringShowCards, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         botonSkip = new JButton();
         botonSkip.setLabel("Saltar Turno");

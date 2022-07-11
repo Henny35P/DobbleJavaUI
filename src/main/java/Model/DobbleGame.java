@@ -1,7 +1,9 @@
 package Model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 
 // Implementa interface
@@ -34,7 +36,6 @@ public class DobbleGame implements IDobbleGame {
         }
         for (int i = 0; i < 2; i++) {
 
-            System.out.println(X.toString());
             Y.addAll(X.get(i).getElementos());
             }
         return Y;
@@ -88,11 +89,10 @@ public class DobbleGame implements IDobbleGame {
     // Transforma juego a String
     @Override
     public String toString() {
-        return "DobbleGame{" +
-                "players=" + players +
-                ", mazo=" + mazo +
-                ", numPlayers=" + numPlayers +
-                '}';
+        return "Juego \n" +
+                "Jugadores = " + players +
+                "\n Mazo = \n" + mazo +
+                "\n Numero Jugadores admitidos = " + numPlayers ;
     }
 
     @Override
