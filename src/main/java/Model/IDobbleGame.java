@@ -3,18 +3,10 @@ package Model;
 import java.util.ArrayList;
 
 public interface IDobbleGame {
-    // Editar esto
-    static ArrayList<String> stackMode(Dobble cardsSet) {
-        ArrayList<Card> X = cardsSet.getMazo();
-        ArrayList<String> Y = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
+    ArrayList<String> stackMode(Dobble cardsSet);
 
-            Y.addAll(X.get(i).getElementos());
-        }
-        return Y;
-    }
-
-    void play(String X);
+    // Permitira al jugador tomar acciones
+    String play(String X, String guess);
 
     String match(ArrayList<String> cartas);
 

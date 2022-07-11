@@ -3,7 +3,6 @@ package Model;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
-import java.util.Scanner;
 
 // Implementa interface
 public class DobbleGame implements IDobbleGame {
@@ -25,36 +24,55 @@ public class DobbleGame implements IDobbleGame {
     }
 
     // Permitira al jugador tomar acciones
+
+    public ArrayList<String> stackMode(Dobble cardsSet) {
+        ArrayList<Card> X = cardsSet.getMazo();
+        ArrayList<String> Y = new ArrayList<>();
+        if (X.size() <= 1 ){
+            Y.addAll(X.get(0).getElementos());
+            return Y;
+        }
+        for (int i = 0; i < 2; i++) {
+
+            System.out.println(X.toString());
+            Y.addAll(X.get(i).getElementos());
+            }
+        return Y;
+    }
     @Override
-    public void play(String X) {
+    public String play(String X, String guess) {
         if (X == "null") {
-            System.out.println(IDobbleGame.stackMode(this.mazo));
+            String Y = stackMode(this.mazo).toString();
+            return Y;
         } else if (X == "pass") {
             this.players.add(this.players.get(0));
             this.players.remove(0);
+            return "Turno pasado";
         } else if (X == "spotit") {
-            System.out.println(IDobbleGame.stackMode(this.mazo));
-            Scanner myScanner = new Scanner(System.in);
-            String respuesta = myScanner.nextLine();
-            String cartaCorrecta = match(IDobbleGame.stackMode(this.getCardsSet()));
+            String cartaCorrecta = match(stackMode(this.getCardsSet()));
+            String W = "Carta Incorrecta!";
 
-            if (cartaCorrecta.equals(respuesta)) {
+            if (cartaCorrecta.equals(guess)) {
                 Player actual = this.players.get(0);
                 actual.setPuntaje(actual.getPuntaje() + 1);
+                W = "Carta Correcta!";
             }
             ArrayList<Card> nuevoMazo = this.mazo.getMazo();
-            if (this.mazo.getMazo().size() < 2) {
-                System.out.println("No quedan mas cartas");
-                System.out.println("Finalizando este juego!");
+            if (this.mazo.getMazo().size() <= 2) {
+                return "No quedan más cartas\n Finalizando juego.";
+
             } else {
                 nuevoMazo.remove(0);
                 nuevoMazo.remove(0);
                 this.mazo.setMazo(nuevoMazo);
                 this.players.add(this.players.get(0));
                 this.players.remove(0);
+                return W;
+
+
             }
         } else {
-            System.out.println("No ingreso comando");
+            return "No se ingreso comando";
         }
     }
 
