@@ -1,6 +1,5 @@
 Función                      Evaluación
 Clases y Estructuras 		 1
-Menú Interactivo 		 1
 Constructor de Juegos		 1
 Play           1
 Register 			 1

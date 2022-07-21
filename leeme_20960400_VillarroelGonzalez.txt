@@ -1,2 +1,0 @@
-Este programa implementa una GUI de el juego GUI, escrito en Java.
-Para ejecutarlo se necesita hacer uso de el IDE IntelliJ IDEA y dentro de este ejecutar la clase DobbleUI
